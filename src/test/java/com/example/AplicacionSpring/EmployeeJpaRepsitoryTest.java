@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DataJpaTest //con esto le digo que solo quiero enfocarme en el JPA
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+//@AutoConfigureTestDatabase(connection = EmbeddedDatabaseConnection.H2)
 public class EmployeeJpaRepsitoryTest {
 
     @Autowired //autowire me inyecta o me crea una implementacion del repositorio

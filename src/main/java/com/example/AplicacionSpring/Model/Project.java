@@ -32,6 +32,10 @@ public class Project {
         this.name = name;
     }
 
+    public Project(){
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -36,7 +36,7 @@ public class RoleController {
      * Obtener por id
      */
     @GetMapping(path = "/{id}")
-    public Optional<Role> obtenerRolePorId(@RequestParam("id") Long id){
+    public Optional<Role> obtenerRolePorId(@PathVariable("id") Long id){
         return this.roleService.obtenerRolePorId(id);
     }
 

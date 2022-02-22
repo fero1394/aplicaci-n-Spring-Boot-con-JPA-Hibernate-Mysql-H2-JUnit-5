@@ -73,6 +73,10 @@ public class Employee {
         this.employeeid = employeeid;
     }
 
+    public void setRolee(Role role){
+        this.role = role;
+    }
+
     @Override
     public int hashCode(){
         final int prime = 31;

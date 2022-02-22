@@ -1,6 +1,8 @@
 package com.example.AplicacionSpring.Model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Employee {
@@ -17,10 +19,22 @@ public class Employee {
     @Column(length = 10,nullable=false,unique=true) //campo no null
     private String employeeid;
 
-    public Employee(String firstName, String lastName, String employeeid) {
+    @ManyToOne(optional = false)
+    @JoinColumn(name="id_role")
+    private Role role;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "employee_project",
+            joinColumns = { @JoinColumn(name = "employee_id")},
+            inverseJoinColumns = { @JoinColumn(name = "project_id")})
+            private List<Project> projects = new ArrayList<Project>();
+
+
+    public Employee(String firstName, String lastName, String employeeid, Role role) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.employeeid = employeeid;
+        this.role = role;
     }
 
     public Employee() {
@@ -67,6 +81,21 @@ public class Employee {
         return result;
     }
 
+    public List<Project> getProjects() {
+        return projects;
+    }
+    public void setProjects(List<Project> projects){
+        this.projects = projects;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -92,4 +121,6 @@ public class Employee {
                 ", employeeid='" + employeeid + '\'' +
                 '}';
     }
+
+
 }
